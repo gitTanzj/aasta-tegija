@@ -13,6 +13,7 @@ SPEED = 5
 PLAYER_WIDTH, PLAYER_HEIGHT = 50, 100
 FPS = 60
 the_player = Player(WIN, PLAYER_HEIGHT, PLAYER_WIDTH)
+completed = ["Matemaatika", "Eesti keel", "Kehaline Kasvatus", "Progemine", "Terviseõpetus"]
 
 ground1 = pygame.Rect(0, HEIGHT - 40, WIDTH, 40)
 ground2 = pygame.Rect(0, HEIGHT // 2 - 40, WIDTH - 250, 40)

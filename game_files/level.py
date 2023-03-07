@@ -7,6 +7,11 @@ class Level():
     # ANNAB LEVELILE OMADUSED
     def __init__(self, surface):
         self.display_surface = surface
+        self.mata_uks = Door(self.display_surface, "Matemaatika")
+        self.esta_uks = Door(self.display_surface, "Eesti keel")
+        self.keka_uks = Door(self.display_surface, "Kehaline kasvatus")
+        self.proge_uks = Door(self.display_surface, "Progemine")
+        self.tervis_uks = Door(self.display_surface, "Terviseõpetus")
 
     # JOONISTAB MÄNGUMAASTIKU KOOS USTE JA PÕRANDATEGA EKRAANILE
     def setup_level(self,ground1, ground2, player):
@@ -14,14 +19,9 @@ class Level():
         pygame.draw.rect(self.display_surface, (193,139,57), ground1)
         pygame.draw.rect(self.display_surface, (193,139,57), ground2)
 
-        mata_uks = Door(self.display_surface, "Matemaatika")
-        esta_uks = Door(self.display_surface, "Eesti keel")
-        keka_uks = Door(self.display_surface, "Kehaline kasvatus")
-        proge_uks = Door(self.display_surface, "Progemine")
-        tervis_uks = Door(self.display_surface, "Terviseõpetus")
-
-        proge_uks.run(20, ground2.y -150, player)
-        mata_uks.run(200, ground2.y -150, player)
-        esta_uks.run(380, ground2.y -150, player)
-        tervis_uks.run(self.display_surface.get_width() - 170, ground1.y - 150, player)
-        keka_uks.run(self.display_surface.get_width() - 370, ground1.y - 150, player)
+        
+        self.mata_uks.run(200, ground2.y - 150, player)
+        self.esta_uks.run(380, ground2.y - 150, player)
+        self.tervis_uks.run(self.display_surface.get_width() - 170, ground1.y - 150, player)
+        self.keka_uks.run(self.display_surface.get_width() - 370, ground1.y - 150, player)
+        self.proge_uks.run(20, ground2.y - 150, player)
