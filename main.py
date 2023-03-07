@@ -1,46 +1,26 @@
 import pygame
-import os
+from level import Level
+from player import Player
 
+
+pygame.init()
 WIDTH, HEIGHT = 900, 500
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))
+pygame.display.set_caption('AASTA TEGIJA 2023')
+level = Level(WIN)
+
 SPEED = 5
-WHITE = (255,255,255)
+PLAYER_WIDTH, PLAYER_HEIGHT = 50, 100
 FPS = 60
-player_gravity = 0
+the_player = Player(WIN, PLAYER_HEIGHT, PLAYER_WIDTH)
 
 
-
-def player_movement(keys_pressed, player):
-    if keys_pressed[pygame.K_a] and player.x > 0:
-        player.x -= SPEED
-    if keys_pressed[pygame.K_d] and player.x < WIDTH:
-        player.x += SPEED
-    if keys_pressed[pygame.K_s] and player.y < HEIGHT - 80:
-        player.y += SPEED
-    if keys_pressed[pygame.K_w] and player.bottom >= HEIGHT-40:
-        player.y -= SPEED
-        global player_gravity
-        player_gravity -= 20
- 
-    
-    
-    
-def handle_player_gravity(player):
-    global player_gravity
-    player_gravity += 0.5
-    player.y += player_gravity
-    if player.bottom >= HEIGHT - 40:
-        player.bottom = HEIGHT - 40
-
-def draw_window(ground, player):
-    WIN.fill(WHITE)
-    pygame.draw.rect(WIN, (255,0,0), ground)
-    pygame.draw.rect(WIN, (0,0,255), player)
+def draw_window():
+    level.run()
+    the_player.setup_player()
     pygame.display.update()
 
 def main():
-    ground = pygame.Rect(0, HEIGHT - 40, WIDTH, 40)
-    player = pygame.Rect(50, 400, 40, 40)
 
     clock = pygame.time.Clock()
     run = True
@@ -50,21 +30,13 @@ def main():
 
             if event.type == pygame.QUIT:
                 run = False
-
-            # if event.type == pygame.KEYDOWN:
-            #     if event.key == pygame.K_w:
-            #         if player.bottom >= HEIGHT-40:
-            #             player.y -= SPEED
-            #             global player_gravity
-            #             player_gravity -= 20
         
 
         keys_pressed = pygame.key.get_pressed()
-        player_movement(keys_pressed, player)
-        handle_player_gravity(player)
+        the_player.run(keys=keys_pressed)
         
 
-        draw_window(ground, player)
+        draw_window()
 
     pygame.quit()
 
