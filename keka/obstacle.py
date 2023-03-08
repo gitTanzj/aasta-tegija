@@ -2,6 +2,7 @@ import pygame
 import os
 from random import randint
 
+pygame.init()
 class Obstacle:
     def __init__(self, display):
         self.display_surface = display

@@ -27,6 +27,14 @@ def show_score():
     textRect.center = (WIDTH // 2, 75)
     WIN.blit(text, textRect)
 
+def end_screen():
+    font = pygame.font.SysFont("comicsans", 72)
+    text = font.render(f"SINU SKOOR ON {SCORE}", 1, (255,255,255))
+    WIN.blit(text, (WIDTH // 2 - text.get_width() / 2, HEIGHT // 2 - text.get_height()/2))
+    pygame.display.update()
+    pygame.time.delay(6000)
+    pygame.quit()
+
 def draw_window():
     WIN.blit(pygame.image.load(os.path.join('assets', 'kehka_bg.png')), (0,0))
     show_score()
@@ -55,6 +63,9 @@ def main():
                 obstacles.pop(0)
             else:
                 obstacles[0].rect.x -= SPEED
+        else:
+            end_screen()
+            
         
         
         player.run()

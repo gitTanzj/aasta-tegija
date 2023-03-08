@@ -1,6 +1,7 @@
 import pygame
 from random import randint
 
+pygame.init()
 class Level:
     def __init__(self, surface):
         self.display_surface = surface

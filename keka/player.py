@@ -1,6 +1,7 @@
 import pygame
 import os
 
+pygame.init()
 class Player:
     # ANNAB KARAKTERI KLASSILE OMADUSED
     def __init__(self, surface, height, width):

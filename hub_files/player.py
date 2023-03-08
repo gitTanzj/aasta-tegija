@@ -1,6 +1,7 @@
 import pygame
 import os
 
+
 # KARAKTERI KLASSI DEFINITSIOON
 class Player:
     # ANNAB KARAKTERI KLASSILE OMADUSED
@@ -20,17 +21,19 @@ class Player:
             
     # TEGELEB KARAKTERI LIIKUMISEGA
     def handle_player_movement(self, keys_pressed):
-        if keys_pressed[pygame.K_a] and self.rect.x > -50:
+        pygame.init()
+        if keys_pressed[pygame.K_a] and self.rect.x > 0:
             self.rect.x -= self.speed
         if keys_pressed[pygame.K_d] and self.rect.x < self.display_surface.get_width():
             self.rect.x += self.speed
         if keys_pressed[pygame.K_w] and self.rect.bottom >= self.display_surface.get_height()-40:
-            self.rect.y -= 20
+            self.gravity -= 20
         
     # TEGELB KARAKTERI GRAVITATSIOONIGA
     def handle_player_gravity(self):
-        self.gravity += 0.5
-        self.rect.y += self.gravity
+        if self.gravity < 60:
+            self.gravity += 0.5
+            self.rect.y += self.gravity
         if self.rect.bottom >= self.display_surface.get_height() - 40:
             self.rect.bottom = self.display_surface.get_height() - 40
 

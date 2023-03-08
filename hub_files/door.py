@@ -1,9 +1,9 @@
 import pygame
 import os
-pygame.font.init()
 
+pygame.init()
 class Door:
-    def __init__(self, surface, subject, file="test.py"):
+    def __init__(self, surface, subject, file):
         self.door_sprite = pygame.image.load(os.path.join("assets", "door_sprite.png"))
         self.subject = subject
         self.text = subject
@@ -22,16 +22,17 @@ class Door:
 
     def handle_file(self):
         for ev in pygame.event.get():
-                if ev.type == pygame.KEYDOWN:
-                    if ev.key == pygame.K_e:
-                        os.system(f'python {self.file}')
+            if ev.type == pygame.KEYDOWN:
+                if ev.key == pygame.K_e:
+                    print("runnnig")
+                    os.system(f'python {self.file}')
             
 
     def collide(self, player, x, y):
         doorRect = pygame.Rect(x, y, self.door_sprite.get_width(), self.door_sprite.get_height())
         if doorRect.colliderect(player):
             self.text = "Vajutage E nuppu"
-            
+            self.handle_file()
         else:
             self.text = self.subject
 
