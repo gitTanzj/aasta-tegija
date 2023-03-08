@@ -1,15 +1,15 @@
 import pygame
-import os
 from door import Door
+import os
 
 # LEVELI KLASSI DEFINITSIOON
 class Level():
     # ANNAB LEVELILE OMADUSED
     def __init__(self, surface):
         self.display_surface = surface
-        self.mata_uks = Door(self.display_surface, "Matemaatika")
+        self.mata_uks = Door(self.display_surface, "Matemaatika",)
         self.esta_uks = Door(self.display_surface, "Eesti keel")
-        self.keka_uks = Door(self.display_surface, "Kehaline kasvatus")
+        self.keka_uks = Door(self.display_surface, "Kehaline kasvatus", os.path.join("keka","main.py"))
         self.proge_uks = Door(self.display_surface, "Progemine")
         self.tervis_uks = Door(self.display_surface, "Terviseõpetus")
 

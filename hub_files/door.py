@@ -20,14 +20,18 @@ class Door:
         self.display_surface.blit(picture, (x, y))
         self.display_surface.blit(text, textRect)
 
+    def handle_file(self):
+        for ev in pygame.event.get():
+                if ev.type == pygame.KEYDOWN:
+                    if ev.key == pygame.K_e:
+                        os.system(f'python {self.file}')
+            
+
     def collide(self, player, x, y):
         doorRect = pygame.Rect(x, y, self.door_sprite.get_width(), self.door_sprite.get_height())
         if doorRect.colliderect(player):
             self.text = "Vajutage E nuppu"
-            for ev in pygame.event.get():
-                if ev.type == pygame.KEYDOWN:
-                    if ev.key == pygame.K_e:
-                        os.system(f'python {self.file}')
+            
         else:
             self.text = self.subject
 

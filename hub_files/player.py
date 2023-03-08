@@ -25,7 +25,7 @@ class Player:
         if keys_pressed[pygame.K_d] and self.rect.x < self.display_surface.get_width():
             self.rect.x += self.speed
         if keys_pressed[pygame.K_w] and self.rect.bottom >= self.display_surface.get_height()-40:
-            self.gravity -= 20
+            self.rect.y -= 20
         
     # TEGELB KARAKTERI GRAVITATSIOONIGA
     def handle_player_gravity(self):

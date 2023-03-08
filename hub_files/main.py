@@ -9,8 +9,7 @@ WIN = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption('AASTA TEGIJA 2023')
 level = Level(WIN)
 
-SPEED = 5
-PLAYER_WIDTH, PLAYER_HEIGHT = 50, 100
+PLAYER_WIDTH, PLAYER_HEIGHT = 50, 75
 FPS = 60
 the_player = Player(WIN, PLAYER_HEIGHT, PLAYER_WIDTH)
 completed = ["Matemaatika", "Eesti keel", "Kehaline Kasvatus", "Progemine", "Terviseõpetus"]
@@ -33,7 +32,7 @@ def main():
         clock.tick(FPS)
         for event in pygame.event.get():
 
-            if event.type == pygame.QUIT:
+            if event.type == pygame.QUIT or len(completed) == 0:
                 run = False
         
         keys_pressed = pygame.key.get_pressed()
