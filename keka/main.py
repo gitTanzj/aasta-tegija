@@ -4,6 +4,10 @@ from player import Player
 from obstacle import Obstacle
 import os
 from random import randint
+import sqlite3 as sql
+
+conn = sql.connect("Vocostarter.db")
+cursor = conn.cursor()
 
 
 pygame.init()
@@ -32,6 +36,10 @@ def end_screen():
     text = font.render(f"SINU SKOOR ON {SCORE}", 1, (255,255,255))
     WIN.blit(text, (WIDTH // 2 - text.get_width() / 2, HEIGHT // 2 - text.get_height()/2))
     pygame.display.update()
+    cursor.execute('INSERT INTO Kehaline (SKOOR) VALUES (?)', (SCORE,))
+    cursor.close()
+    conn.commit()
+    conn.close()
     pygame.time.delay(6000)
     pygame.quit()
 

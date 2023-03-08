@@ -1,6 +1,10 @@
 from tkinter import *
 from tkinter import ttk
 from tkinter import Tk
+import sqlite3 as sql
+
+conn = sql.connect("Vocostarter.db")
+c = conn.cursor()
 
 #____________________________________________
 
@@ -15,7 +19,6 @@ notebook = ttk.Notebook(window)
 notebook.pack(fill="both")
 
 #____________________________________________
-global SKOOR
 SKOOR = 0
 def Kontroll():
     global SKOOR
@@ -88,7 +91,10 @@ def Kontroll():
         SKOOR -=1
         print(int(SKOOR))
         
-    
+    c.execute('INSERT INTO Erki (SKOOR) VALUES (?)', (SKOOR,))
+    c.close()
+    conn.commit()
+    conn.close()
 
     
 #____________________________________________
@@ -104,15 +110,15 @@ font=("Arial",13))
 Label1.pack(side="left")
 Label1.place(x=120,y=500)
 
-ErkiImage = PhotoImage(file="erki.png")
+ErkiImage = PhotoImage(file=r"Erki_Ül\erki.png")
 ErkiLabel = ttk.Label(window, image = ErkiImage)
-PhotoImage(file="erki.png")
+PhotoImage(file=r"Erki_Ül\erki.png")
 ErkiLabel.pack(side="left")
 ErkiLabel.place(x=70,y=50)
 
-VieteImage = PhotoImage(file="viete.png")
+VieteImage = PhotoImage(file=r"Erki_Ül\Viete.png")
 VieteLabel = ttk.Label(window,image=VieteImage)
-PhotoImage(file="viete.png")
+PhotoImage(file=r"Erki_Ül\Viete.png")
 VieteLabel.pack(side="left")
 VieteLabel.place(x=70,y=300)
 

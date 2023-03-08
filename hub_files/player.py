@@ -22,7 +22,7 @@ class Player:
     # TEGELEB KARAKTERI LIIKUMISEGA
     def handle_player_movement(self, keys_pressed):
         pygame.init()
-        if keys_pressed[pygame.K_a] and self.rect.x > 0:
+        if keys_pressed[pygame.K_a] and self.rect.x > -50:
             self.rect.x -= self.speed
         if keys_pressed[pygame.K_d] and self.rect.x < self.display_surface.get_width():
             self.rect.x += self.speed

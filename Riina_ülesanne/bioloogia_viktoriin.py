@@ -2,6 +2,11 @@ from tkinter import *
 from tkinter import ttk
 import tkinter as tk
 import os
+import sqlite3 as sql
+
+conn = sql.connect("Vocostarter.db")
+c = conn.cursor()
+
 
 
 
@@ -97,6 +102,10 @@ def Riina_kommentaar():
     skoorid.append(SKOOR)
     uus_skoorid = int(skoorid[-1]) #uus_skoorid saada andmebaasi
     RIINA_ENTRY.insert(0, uus_skoorid)
+    c.execute('INSERT INTO Riina (SKOOR) VALUES (?)', (uus_skoorid,))
+    c.close()
+    conn.commit()
+    conn.close()
     
     if uus_skoorid <= 3:
         

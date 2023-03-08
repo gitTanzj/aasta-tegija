@@ -1,6 +1,10 @@
 import pygame
 from level import Level
 from player import Player
+import sqlite3 as sql
+
+conn = sql.connect("Vocostarter.db")
+c = conn.cursor()
 
 pygame.init()
 
@@ -20,6 +24,27 @@ clock = pygame.time.Clock()
 
 #NÄITAB SKOORI EKRAANIL
 def draw_score():
+
+    c.execute("SELECT sum(SKOOR) FROM Riina")
+    table1_scores = c.fetchall()
+    c.execute("SELECT sum(SKOOR) FROM Kehaline")
+    table2_scores = c.fetchall()
+    c.execute("SELECT sum(SKOOR) FROM Erki")
+    table3_scores = c.fetchall()
+    c.execute("SELECT sum(SKOOR) FROM Eesti_keel")
+    table4_scores = c.fetchall()
+    
+
+    def add_scores(*args):
+        res = 0
+        for i in args:
+            if i == None:
+                i = 0
+            res += i
+        return res
+    
+    SCORE = add_scores(table1_scores[0][0], table2_scores[0][0], table3_scores[0][0], table4_scores[0][0])
+
     font = pygame.font.SysFont("comicsans", 18)
     text = font.render(f"Skoor : {SCORE}", 1, (0,0,0))
     textRect = text.get_rect()
@@ -49,6 +74,7 @@ def main():
         
 
         draw_window()
+    conn.close()
     pygame.quit()
 
 
