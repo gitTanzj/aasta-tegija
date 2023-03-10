@@ -17,7 +17,7 @@ SCORE = 0
 PLAYER_WIDTH, PLAYER_HEIGHT = 50, 75
 FPS = 60
 the_player = Player(WIN, PLAYER_HEIGHT, PLAYER_WIDTH)
-completed = ["Matemaatika", "Eesti keel", "Kehaline Kasvatus", "Progemine", "Terviseõpetus"]
+completed = ["Riina", "Kehaline", "Erki", "Eesti_keel"]
 ground1 = pygame.Rect(0, HEIGHT - 40, WIDTH, 40)
 ground2 = pygame.Rect(0, HEIGHT // 2 - 40, WIDTH - 250, 40)
 clock = pygame.time.Clock()
@@ -74,6 +74,8 @@ def main():
         
 
         draw_window()
+    for i in completed:
+        c.execute(f"DELETE FROM {i}")
     conn.close()
     pygame.quit()
 
