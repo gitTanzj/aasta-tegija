@@ -75,7 +75,9 @@ def main():
 
         draw_window()
     for i in completed:
+        print(f'deleting from {i}')
         c.execute(f"DELETE FROM {i}")
+    conn.commit()
     conn.close()
     pygame.quit()
 

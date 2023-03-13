@@ -1,5 +1,6 @@
 import pygame
 from door import Door
+import os
 
 
 pygame.init()
@@ -8,11 +9,11 @@ class Level():
     # ANNAB LEVELILE OMADUSED
     def __init__(self, surface):
         self.display_surface = surface
-        self.mata_uks = Door(self.display_surface, "Matemaatika", "Erki_Ül\\Erki_ülesanne.py")
-        self.esta_uks = Door(self.display_surface, "Eesti keel", "hangman\\main.py")
-        self.keka_uks = Door(self.display_surface, "Kehaline kasvatus", "keka\\main.py")
-        self.proge_uks = Door(self.display_surface, "Progemine", "hub_files\\margus.py")
-        self.tervis_uks = Door(self.display_surface, "Terviseõpetus", "Riina_ülesanne\\bioloogia_viktoriin.py")
+        self.mata_uks = Door(self.display_surface, "Matemaatika", os.path.join('Erki_Ül', 'Erki_ülesanne.py'))
+        self.esta_uks = Door(self.display_surface, "Eesti keel", os.path.join('hangman', 'main.py'))
+        self.keka_uks = Door(self.display_surface, "Kehaline kasvatus", os.path.join('keka', 'main.py'))
+        self.proge_uks = Door(self.display_surface, 'Progemine', 'margus.py')
+        self.tervis_uks = Door(self.display_surface, "Terviseõpetus", os.path.join('Riina_ülesanne', 'bioloogia_viktoriin.py'))
 
     # JOONISTAB MÄNGUMAASTIKU KOOS USTE JA PÕRANDATEGA EKRAANILE
     def setup_level(self,ground1, ground2, player):
