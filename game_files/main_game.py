@@ -5,10 +5,6 @@ import sqlite3 as sql
 from database import databaseInit
 import os
 
-
-
-
-
 pygame.init()
 
 # MÄNGUKS VAJALIKUD MUUTUJAD
@@ -92,5 +88,4 @@ def main():
 
 
 if __name__ == "__main__": 
-    print('started')
     main()
