@@ -1,2 +1,5 @@
 # python cache files and folder
 __pycache__/
+
+# ignore database file (since it creates a new one anyways when the user runs the program)
+Vocostarter.db

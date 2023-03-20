@@ -2,9 +2,12 @@ import pygame
 from level import Level
 from player import Player
 import sqlite3 as sql
+from database import databaseInit
+import os
 
-conn = sql.connect("Vocostarter.db")
-c = conn.cursor()
+
+
+
 
 pygame.init()
 
@@ -17,10 +20,16 @@ SCORE = 0
 PLAYER_WIDTH, PLAYER_HEIGHT = 50, 75
 FPS = 60
 the_player = Player(WIN, PLAYER_HEIGHT, PLAYER_WIDTH)
-completed = ["Riina", "Kehaline", "Erki", "Eesti_keel"]
+ained = ["Riina", "Kehaline", "Erki", "Eesti_keel"]
 ground1 = pygame.Rect(0, HEIGHT - 40, WIDTH, 40)
 ground2 = pygame.Rect(0, HEIGHT // 2 - 40, WIDTH - 250, 40)
 clock = pygame.time.Clock()
+
+if not os.path.exists('Vocostarter.db'):
+    databaseInit(ained)
+
+conn = sql.connect("Vocostarter.db")
+c = conn.cursor()
 
 #NÄITAB SKOORI EKRAANIL
 def draw_score():
@@ -66,7 +75,7 @@ def main():
         clock.tick(FPS)
         for event in pygame.event.get():
 
-            if event.type == pygame.QUIT or len(completed) == 0:
+            if event.type == pygame.QUIT or len(ained) == 0:
                 run = False
         
         keys_pressed = pygame.key.get_pressed()
@@ -74,7 +83,7 @@ def main():
         
 
         draw_window()
-    for i in completed:
+    for i in ained:
         print(f'deleting from {i}')
         c.execute(f"DELETE FROM {i}")
     conn.commit()
@@ -82,5 +91,6 @@ def main():
     pygame.quit()
 
 
-if __name__ == "__main__":
+if __name__ == "__main__": 
+    print('started')
     main()
