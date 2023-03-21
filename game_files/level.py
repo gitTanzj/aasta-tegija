@@ -12,7 +12,7 @@ class Level():
         self.mata_uks = Door(self.display_surface, "Matemaatika", os.path.join('Erki_Ül', 'Erki_ülesanne.py'))
         self.esta_uks = Door(self.display_surface, "Eesti keel", os.path.join('hangman', 'main.py'))
         self.keka_uks = Door(self.display_surface, "Kehaline kasvatus", os.path.join('keka', 'main.py'))
-        self.proge_uks = Door(self.display_surface, 'Progemine', 'margus.py')
+        self.proge_uks = Door(self.display_surface, 'Progemine', os.path.join('progemine', 'DB.py'))
         self.tervis_uks = Door(self.display_surface, "Terviseõpetus", os.path.join('Riina_ülesanne', 'bioloogia_viktoriin.py'))
 
     # JOONISTAB MÄNGUMAASTIKU KOOS USTE JA PÕRANDATEGA EKRAANILE
