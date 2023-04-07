@@ -27,69 +27,61 @@ def Kontroll():
     
 
     if int(entry1.get()) == -2 and int(entry2.get()) == -4 and int(entry3.get()) == -2 and int(entry4.get()) == -4:
-        print("2 punkti")
-        label1.configure(text="Õigesti lahendasid! Nüüd teenisid välja 8 punkti",
+        label1.configure(text="Õigesti lahendasid! Nüüd teenisid välja 200 punkti",
                          font=("Arial",15),
                          foreground="green")
         label1.pack(side=RIGHT)
         label1.place(x=810,y=425)
-        SKOOR +=8
+        SKOOR += 200
         
     
     elif int(entry1.get()) == -4 and int(entry2.get()) == -2 and int(entry3.get()) == -4 and int(entry4.get()) == -2:
-        print("Õigesti lahendasid!")
-        label1.configure(text="Õigesti lahendasid! Nüüd teenisid välja 8 punkti",
+        label1.configure(text="Õigesti lahendasid! Nüüd teenisid välja 200 punkti",
                          font=("Arial",15),
                          foreground="green")
         label1.pack(side=RIGHT)
         label1.place(x=810,y=425)
-        SKOOR +=8
+        SKOOR += 200
         
     
     elif int(entry1.get()) == -2 and int(entry2.get()) == -4 and int(entry3.get()) == -2 and int(entry4.get()) == -4:
-        print("Õigesti lahendasid!")
-        label1.configure(text="Õigesti lahendasid! Nüüd teenisid välja 8 punkti",
+        label1.configure(text="Õigesti lahendasid! Nüüd teenisid välja 200 punkti",
                          font=("Arial",15),
                          foreground="green")
         label1.pack(side=RIGHT)
         label1.place(x=810,y=425)
-        SKOOR +=8
+        SKOOR += 200
         
     elif int(entry1.get()) == -4 and int(entry2.get()) == -2 and int(entry3.get()) == -4 and int(entry4.get()) == -2:
-        print("Õigesti lahendasid!")
-        label1.configure(text="Õigesti lahendasid! Nüüd teenisid välja 8 punkti",
+        label1.configure(text="Õigesti lahendasid! Nüüd teenisid välja 200 punkti",
                          font=("Arial",15),
                          foreground="green")
         label1.pack(side=RIGHT)
         label1.place(x=810,y=425)
-        SKOOR +=8
+        SKOOR += 200
         
     elif int(entry1.get()) == -4 and int(entry2.get()) == -2 and int(entry3.get()) == -2 and int(entry4.get()) == -4:
-        print("Õigesti lahendasid!")
-        label1.configure(text="Õigesti lahendasid! Nüüd teenisid välja 8 punkti",
+        label1.configure(text="Õigesti lahendasid! Nüüd teenisid välja 200 punkti",
                          font=("Arial",15),
                          foreground="green")
         label1.pack(side=RIGHT)
         label1.place(x=810,y=425)
-        SKOOR +=8
+        SKOOR += 200
         
     elif int(entry1.get()) == -2 and int(entry2.get()) == -4 and int(entry3.get()) == -4 and int(entry4.get()) == -2:
-        print("Õigesti lahendasid!")
-        label1.configure(text="Õigesti lahendasid! Nüüd teenisid välja 8 punkti",font=("Arial",15),foreground="green")
+        label1.configure(text="Õigesti lahendasid! Nüüd teenisid välja 200 punkti",font=("Arial",15),foreground="green")
         label1.pack(side=RIGHT)
         label1.place(x=810,y=425)
-        SKOOR +=8
-        print(int(SKOOR))
+        SKOOR += 200
         
     else:
-        print("Vale")
-        label1.configure(text="Nii ikka ei saa. Kaotasid 1 punkti. Proovi uuesti!",
+        label1.configure(text="Nii ikka ei saa. Kaotasid 25 punkti. Proovi uuesti!",
                          font=("Arial",15),
                          foreground="red")
         label1.pack(side=RIGHT)
         label1.place(x=810,y=425)
         SKOOR -=1
-        print(int(SKOOR))
+        
         
     c.execute('INSERT INTO Erki (SKOOR) VALUES (?)', (SKOOR,))
     c.close()

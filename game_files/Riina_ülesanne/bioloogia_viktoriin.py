@@ -1,7 +1,6 @@
 from tkinter import *
 from tkinter import ttk
 import tkinter as tk
-import os
 import sqlite3 as sql
 
 conn = sql.connect("Vocostarter.db")
@@ -28,26 +27,26 @@ def Vastus():
     #skoorid[0]
     #print(skoorid[-1])
     if selection == 1:
-        SKOOR += 5
+        SKOOR += 200
         LOENDUR +=1
         KONTROLL.delete(0,END)
         ans = "Õige"
         KONTROLL.insert(0,ans)
         label1.pack(side=RIGHT)
-        label1.configure(text="Sinu skoorile liideti 5 punkti!",
+        label1.configure(text="Sinu skoorile liideti 200 punkti!",
                          font=("Arial",15),
                          foreground="green")
         label1.pack(side=RIGHT)
         label1.place(x=410,y=130)
         
     elif selection == 2:
-        SKOOR -= 1
+        SKOOR -= 50
         LOENDUR +=1
         KONTROLL.delete(0,END)
         ans = "Vale"
         KONTROLL.insert(0,ans)
         label1.configure(text="")
-        label1.configure(text="Sinu skoorilt kaotati 1 punkt!",
+        label1.configure(text="Sinu skoorilt kaotati 50 punkt!",
                          font=("Arial",15),
                          foreground="red")
         label1.pack(side=RIGHT)
@@ -55,13 +54,13 @@ def Vastus():
     
     elif selection == 3:
         
-        SKOOR -= 1
+        SKOOR -= 50
         LOENDUR +=1        
         
         KONTROLL.delete(0,END)
         ans = "Vale"
         KONTROLL.insert(0,ans)
-        label1.configure(text="Sinu skoorilt kaotati 1 punkt!",
+        label1.configure(text="Sinu skoorilt kaotati 50 punkt!",
                          font=("Arial",15),
                          foreground="red")
         label1.pack(side=RIGHT)
@@ -69,12 +68,12 @@ def Vastus():
     
     elif selection == 4:
         
-        SKOOR -= 1
+        SKOOR -= 50
         LOENDUR +=1
         KONTROLL.delete(0,END)
         ans = "Vale"
         KONTROLL.insert(0,ans)
-        label1.configure(text="Sinu skoorilt kaotati 1 punkt!",
+        label1.configure(text="Sinu skoorilt kaotati 50 punkt!",
                          font=("Arial",15),
                          foreground="red")
         label1.pack(side=RIGHT)
@@ -89,11 +88,13 @@ def Vastus():
         label2.configure(text="Võiksid liituda tasanduskursusega.",font=("Arial",12),background="white")
         label2.pack(side=RIGHT)
         label2.place(x=930,y=120)
+
     
 
 #____________________________________________
 
 def Riina_kommentaar():
+    global run
     label2 = ttk.Label(text="")
 
     
@@ -117,17 +118,13 @@ def Riina_kommentaar():
         label2.configure(text="Hästi tehtud!",font=("Arial",12),background="white")
         label2.pack(side=RIGHT)
         label2.place(x=960,y=120)
-        
-
-
-
 
 #____________________________________________
 
 valikud = ["Kissell","Piim","Juust","Hapukoor"]
 
 window = Tk()
-window.geometry("1100x1000")
+window.geometry("1400x1000")
 window.title("Bioloogia küsimus")
 
 

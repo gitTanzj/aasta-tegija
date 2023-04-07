@@ -17,7 +17,7 @@ WIN = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption('Kehaline kasvatus')
 FPS = 60
 SPEED = randint(5, 10)
-SCORE = 330
+SCORE = 200
 
 level = Level(WIN)
 ground = pygame.Rect(0, HEIGHT - 40, WIDTH, 40)
@@ -66,7 +66,7 @@ def main():
 
         if len(obstacles) != 0:
             if obstacles[0].rect.colliderect(player.rect):
-                SCORE -= 1
+                SCORE -= 0.5
             if obstacles[0].rect.x <= 0:
                 obstacles.pop(0)
             else:

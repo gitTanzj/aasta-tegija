@@ -1,12 +1,16 @@
 import pygame
 import os
+import sqlite3 as sql
 
 Skoor = 0
 entry_1 = ""
 pygame.init()
-WIDTH, HEIGHT = 800, 400
+WIDTH, HEIGHT = 900, 500
 win = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Põgenege andmebaasi!")
+
+conn = sql.connect('Vocostarter.db')
+c = conn.cursor()
 
 # Nuppud
 
@@ -50,9 +54,9 @@ while run == True:
             if event.key == pygame.K_BACKSPACE:
                 entry_1 = entry_1[:-1]
             elif event.key == pygame.K_RETURN:
-                if entry_1 == "A" or 'a':
+                if entry_1 == "A" or entry_1 == "a":
                     # Punktid juurde
-                    Skoor += 50
+                    Skoor += 200
                     win.fill(WHITE)
                     text = Font.render("Olete võitnud!", 1, BLACK)
                     win.blit(text, (250, 180))
@@ -61,7 +65,7 @@ while run == True:
                     run = False
                 else:
                     # Punktid maha
-                    Skoor -= 50
+                    Skoor -= 200
                     win.fill(WHITE)
                     text = Font.render("Olete kaotanud!", 1, BLACK)
                     win.blit(text, (250, 180))
@@ -69,6 +73,9 @@ while run == True:
                     pygame.time.delay(1000)
                     run = False
                 entry_1 = ""
+                c.execute(f'INSERT INTO Margus (SKOOR) VALUES ({Skoor})')
+                conn.commit()
+                conn.close()
             else:
                 entry_1 += event.unicode
 

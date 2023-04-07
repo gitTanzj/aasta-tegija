@@ -6,7 +6,7 @@ conn = sql.connect("Vocostarter.db")
 c = conn.cursor()
 
 pygame.init()
-WIDTH, HEIGHT = 800, 500
+WIDTH, HEIGHT = 900, 500
 win = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Hangman!")
 
@@ -31,7 +31,6 @@ pildid = []
 for i in range(7):
     pilt = pygame.image.load(r"hangman\assets\Hangman" + str(i) + ".png")
     pildid.append(pilt)
-print(pildid)
 
 # Game variables
 
@@ -50,7 +49,7 @@ run = True
 def draw():
     win.fill(WHITE)
     
-    # sõnad
+    # tähed
     display_sõna = ""
     for täht in sõna:
         if täht in arvatud:
@@ -58,7 +57,7 @@ def draw():
         else:
             display_sõna += "_ "
     text = SÕNA_FONT.render(display_sõna, 1, BLACK)
-    win.blit(text, (50, 20))
+    win.blit(text, (100, 20))
 
     # Buttons
     for täht in tähed:
@@ -102,7 +101,7 @@ while run == True:
         win.fill("WHITE")
         text = SÕNA_FONT.render("Teie olete võitnud!", 1, BLACK)
         win.blit(text, (WIDTH/2 - text.get_width()/ 2, (HEIGHT / 2 - text.get_height()/ 2)))
-        c.execute('INSERT INTO Eesti_keel (SKOOR) VALUES (100)')
+        c.execute('INSERT INTO Eesti_keel (SKOOR) VALUES (200)')
         c.close()
         conn.commit()
         conn.close()
@@ -115,7 +114,7 @@ while run == True:
         win.fill("BLACK")
         text = SÕNA_FONT.render("Olete kaotanud!", 1, "WHITE")
         win.blit(text, (WIDTH/2 - text.get_width()/ 2, (HEIGHT / 2 - text.get_height()/ 2)))
-        c.execute('INSERT INTO Eesti_keel (SKOOR) VALUES (-100)')
+        c.execute('INSERT INTO Eesti_keel (SKOOR) VALUES (-200)')
         c.close()
         conn.commit()
         conn.close()
